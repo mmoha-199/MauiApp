@@ -68,5 +68,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="../StarterApp.Database/StarterApp.Database.csproj" />
 	</ItemGroup>
-
+    <Target Name="_StartAdbServer" />
 </Project>

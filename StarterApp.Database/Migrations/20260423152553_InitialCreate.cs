@@ -21,10 +21,13 @@ namespace StarterApp.Database.Migrations
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     PricePerDay = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
-                    CategoryId = table.Column<string>(type: "text", nullable: false),
+                    CategoryId = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     AvailableFrom = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 255, nullable: false),
                     AvailableTo = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 255, nullable: false),
-                    IsAvailable = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
+                    IsAvailable = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

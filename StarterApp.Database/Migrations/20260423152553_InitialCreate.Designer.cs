@@ -12,7 +12,7 @@ using StarterApp.Database.Data;
 namespace StarterApp.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260420141249_InitialCreate")]
+    [Migration("20260423152553_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -43,7 +43,14 @@ namespace StarterApp.Database.Migrations
 
                     b.Property<string>("CategoryId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -63,6 +70,9 @@ namespace StarterApp.Database.Migrations
                     b.Property<decimal>("PricePerDay")
                         .HasPrecision(10, 2)
                         .HasColumnType("numeric(10,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
