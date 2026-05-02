@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StarterApp.Database.Models;
@@ -17,9 +18,9 @@ public class AppDbContext : DbContext
     {
         if (optionsBuilder.IsConfigured) return;
 
-        var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+        //var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
-        if (string.IsNullOrEmpty(connectionString))
+        /*if (string.IsNullOrEmpty(connectionString))
         {
             var a = Assembly.GetExecutingAssembly();
             using var stream = a.GetManifestResourceStream("StarterApp.Database.appsettings.json");
@@ -29,9 +30,11 @@ public class AppDbContext : DbContext
                 .Build();
 
             connectionString = config.GetConnectionString("DevelopmentConnection");
-        }
+          
+        }*/
+ 
 
-        optionsBuilder.UseNpgsql(connectionString);
+        //optionsBuilder.UseNpgsql(connectionString);
     }
 
     public DbSet<Role> Roles { get; set; }

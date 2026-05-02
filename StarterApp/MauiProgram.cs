@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using StarterApp.ViewModels;
 using StarterApp.Database.Data;
+using Microsoft.EntityFrameworkCore;
 using StarterApp.Views;
 using System.Diagnostics;
 using StarterApp.Services;
@@ -20,7 +21,18 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddDbContext<AppDbContext>();
+        
+        builder.Services.AddDbContext<AppDbContext>(options =>
+       {
+         var connectionString = "Host=localhost;Port=5432;Username=app_user;Password=app_password;Database=appdb";
+
+         if (DeviceInfo.Platform == DevicePlatform.Android)
+           {
+             connectionString = "Host=10.0.2.2;Port=5432;Username=app_user;Password=app_password;Database=appdb";
+            }
+
+         options.UseNpgsql(connectionString);
+        });
 
         builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
         builder.Services.AddSingleton<INavigationService, NavigationService>();
