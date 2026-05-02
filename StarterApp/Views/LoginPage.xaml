@@ -6,9 +6,9 @@
              Title="{Binding Title}"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <vm:LoginViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <ScrollView>
         <Grid Padding="30" RowSpacing="20" VerticalOptions="Center">

@@ -5,9 +5,9 @@
              xmlns:vm="clr-namespace:StarterApp.ViewModels"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <vm:MainViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext> -->
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile" 
@@ -139,6 +139,38 @@
                         <Grid ColumnDefinitions="Auto,*,Auto">
                             <Label Grid.Column="0"
                                    Text="⚙️"
+                                   FontSize="24"
+                                   VerticalOptions="Center" />
+                            <StackLayout Grid.Column="1" Margin="15,0,0,0" VerticalOptions="Center">
+                                <Label Text="App Settings"
+                                       FontSize="16"
+                                       FontAttributes="Bold" />
+                                <Label Text="Configure app preferences"
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}" />
+                            </StackLayout>
+                            <Label Grid.Column="2"
+                                   Text=">"
+                                   FontSize="18"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray600}}" />
+                        </Grid>
+                    </Border>
+                                        <!-- Items Card -->
+                    <Border BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                            Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray700}}"
+                            StrokeThickness="1"
+                            Padding="20"
+                            HeightRequest="80">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToSettingsCommand}" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Label Grid.Column="0"
+                                   Text = "📚"
                                    FontSize="24"
                                    VerticalOptions="Center" />
                             <StackLayout Grid.Column="1" Margin="15,0,0,0" VerticalOptions="Center">

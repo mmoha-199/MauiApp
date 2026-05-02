@@ -122,7 +122,14 @@ public partial class MainViewModel : BaseViewModel
         
         await _navigationService.NavigateToAsync("UserListPage");
     }
-
+    /// @brief Navigates to the items page
+    /// @details Relay command that navigates to the items management page, admin only
+    /// @return A task representing the asynchronous navigation operation
+    [RelayCommand]
+    private async Task NavigateToItemsAsync()
+    {
+        await _navigationService.NavigateToAsync("ItemDetailPage");
+    }
     /// @brief Refreshes the dashboard data
     /// @details Relay command that reloads user data and simulates a refresh operation
     /// @return A task representing the asynchronous refresh operation
