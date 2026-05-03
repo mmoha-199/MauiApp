@@ -1,4 +1,5 @@
 ﻿using StarterApp.ViewModels;
+using StarterApp.Views;
 
 
 
@@ -19,6 +20,8 @@ public partial class App : Application
 		Routing.RegisterRoute(nameof(Views.UserListPage), typeof(Views.UserListPage));
 		Routing.RegisterRoute(nameof(Views.UserDetailPage), typeof(Views.UserDetailPage));
 		Routing.RegisterRoute(nameof(Views.TempPage), typeof(Views.TempPage));
+		Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
+
 
 		
 	}

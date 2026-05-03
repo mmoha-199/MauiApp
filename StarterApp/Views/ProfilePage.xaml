@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="StarterApp.Views.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:StarterApp.ViewModels"
+    Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- User Info -->
+            <Label Text="User Information" 
+                   FontSize="20" 
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding CurrentUser.Username}" 
+                   FontSize="16" />
+
+            <Label Text="{Binding CurrentUser.Email}" 
+                   FontSize="14" 
+                   TextColor="Gray" />
+
+            <!-- Toggle Change Password -->
+            <Button Text="Change Password"
+                    Command="{Binding TogglePasswordChangeModeCommand}" />
+
+            <!-- Password Section -->
+            <VerticalStackLayout IsVisible="{Binding IsChangingPassword}"
+                                 Spacing="10">
+
+                <Entry Placeholder="Current Password"
+                       Text="{Binding CurrentPassword}"
+                       IsPassword="True" />
+
+                <Entry Placeholder="New Password"
+                       Text="{Binding NewPassword}"
+                       IsPassword="True" />
+
+                <Entry Placeholder="Confirm New Password"
+                       Text="{Binding ConfirmNewPassword}"
+                       IsPassword="True" />
+
+                <Button Text="Save Password"
+                        Command="{Binding ChangePasswordAsyncCommand}" />
+
+            </VerticalStackLayout>
+
+            <!-- Busy Indicator -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}" />
+
+            <!-- Error Message -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   IsVisible="{Binding HasError}" />
+
+            <!-- Back Button -->
+            <Button Text="Back"
+                    Command="{Binding NavigateBackAsyncCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -5,7 +5,7 @@ public class NavigationService : INavigationService
 {
     public async Task NavigateToAsync(string route)
     {
-        Debug.WriteLine($"Navigating to: {route}"); // Debug log to verify route names
+        //Debug.WriteLine($"Navigating to: {route}"); // Debug log to verify route names
         await Shell.Current.GoToAsync(route);
     }
 
