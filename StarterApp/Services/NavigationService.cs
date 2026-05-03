@@ -1,9 +1,11 @@
+using System.Diagnostics;
 namespace StarterApp.Services;
 
 public class NavigationService : INavigationService
 {
     public async Task NavigateToAsync(string route)
     {
+        Debug.WriteLine($"Navigating to: {route}"); // Debug log to verify route names
         await Shell.Current.GoToAsync(route);
     }
 
@@ -26,4 +28,7 @@ public class NavigationService : INavigationService
     {
         await Shell.Current.Navigation.PopToRootAsync();
     }
+
+
+
 }

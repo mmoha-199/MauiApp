@@ -5,15 +5,17 @@
              xmlns:vm="clr-namespace:StarterApp.ViewModels"
              Title="{Binding Title}">
 
-    <!--<ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <vm:TempViewModel />
-    </ContentPage.BindingContext>-->
+    </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <Label 
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <!--<Label 
             Text="{Binding Message}"
             FontSize="24"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" />-->
+            <Button 
+                    Text="Temp test"/>
     </VerticalStackLayout>
 </ContentPage>

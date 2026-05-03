@@ -1,5 +1,7 @@
 ﻿using StarterApp.ViewModels;
 
+
+
 namespace StarterApp;
 
 public partial class AppShell : Shell
@@ -8,5 +10,6 @@ public partial class AppShell : Shell
 	{	
 		BindingContext = viewModel;
 		InitializeComponent();
+
 	}
 }
