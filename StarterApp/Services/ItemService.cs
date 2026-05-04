@@ -23,6 +23,18 @@ public class ItemService
 
         _repository.Add(item);
     }
+        public void DeleteItem(int id)
+    {
+        _repository.Delete(id);
+    }
+
+    public List<Item> SearchItems(string query)
+    {
+        return _repository
+            .GetAll()
+            .Where(i => i.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
 
     public bool CheckAvailability(int itemId)
     {

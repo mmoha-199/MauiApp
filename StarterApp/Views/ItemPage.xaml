@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<TabbedPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StarterApp.Views.ItemPage">
+
+    <!-- BROWSE -->
+    <ContentPage Title="Browse">
+        <VerticalStackLayout Padding="20">
+
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <!-- ADD -->
+    <ContentPage Title="Add">
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Entry Placeholder="Name" Text="{Binding Name}" />
+            <Entry Placeholder="Description" Text="{Binding Description}" />
+
+            <Button Text="Save"
+                    Command="{Binding AddItemCommand}" />
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <!-- SEARCH -->
+    <ContentPage Title="Search">
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Entry Placeholder="Search..."
+                   Text="{Binding SearchText}" />
+
+            <Button Text="Search"
+                    Command="{Binding SearchCommand}" />
+
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Description}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+</TabbedPage>

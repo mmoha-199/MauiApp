@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using StarterApp.Database.Models;
 
-public class ItemDetailViewModel : BindableObject
+public class ItemPageViewModel : BindableObject
 {
     private readonly ItemService _service;
 
@@ -12,12 +12,17 @@ public class ItemDetailViewModel : BindableObject
     public string Description { get; set; }
 
     public ICommand AddItemCommand { get; }
+    public ICommand DeleteItemCommand { get; }
+    public string SearchText { get; set; }
+    public ICommand SearchCommand { get; }
 
-    public ItemDetailViewModel(ItemService service)
+    public ItemPageViewModel(ItemService service)
     {
         _service = service;
 
         AddItemCommand = new Command(AddItem);
+        //DeleteItemCommand = new Command<Item>(DeleteItem);
+        SearchCommand = new Command(Search);
         LoadItems();
     }
 
@@ -34,6 +39,26 @@ public class ItemDetailViewModel : BindableObject
         LoadItems();
         OnPropertyChanged(nameof(Name));
         OnPropertyChanged(nameof(Description));
+    }
+      /*private void DeleteItem(Item item)
+    {
+        if (item == null)
+            return;
+
+        _service.DeleteItem(item.Id);
+        LoadItems();
+    }*/
+
+    private void Search()
+    {
+        Items.Clear();
+
+        var results = string.IsNullOrWhiteSpace(SearchText)
+            ? _service.GetItems()
+            : _service.SearchItems(SearchText);
+
+        foreach (var item in results)
+            Items.Add(item);
     }
 
     private void LoadItems()

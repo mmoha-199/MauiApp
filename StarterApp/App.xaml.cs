@@ -15,7 +15,8 @@ public partial class App : Application
 
 		Routing.RegisterRoute(nameof(Views.LoginPage), typeof(Views.LoginPage));
 		Routing.RegisterRoute(nameof(Views.MainPage), typeof(Views.MainPage));
-		Routing.RegisterRoute(nameof(Views.ItemDetailPage), typeof(Views.ItemDetailPage));
+		// Replaced ItemDetailPage with ItemPage (supports list, add, delete, search)
+		Routing.RegisterRoute(nameof(ItemPage), typeof(ItemPage));
 		Routing.RegisterRoute(nameof(Views.RegisterPage), typeof(Views.RegisterPage));
 		Routing.RegisterRoute(nameof(Views.UserListPage), typeof(Views.UserListPage));
 		Routing.RegisterRoute(nameof(Views.UserDetailPage), typeof(Views.UserDetailPage));

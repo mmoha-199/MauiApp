@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using StarterApp.Views;
 using System.Diagnostics;
 using StarterApp.Services;
+using StarterApp.Database.Data.Repositories;
 
 namespace StarterApp;
 
@@ -52,8 +53,10 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<ProfilePage>();
         builder.Services.AddTransient<UserDetailPage>();
-        builder.Services.AddTransient<ItemDetailPage>();
-        builder.Services.AddTransient<ItemDetailViewModel>();
+        builder.Services.AddTransient<ItemRepository>();
+        builder.Services.AddTransient<ItemService>();
+        builder.Services.AddTransient<ItemPage>();
+        builder.Services.AddTransient<ItemPageViewModel>();
         builder.Services.AddTransient<UserDetailViewModel>();
         builder.Services.AddSingleton<TempViewModel>();
         builder.Services.AddTransient<TempPage>();
