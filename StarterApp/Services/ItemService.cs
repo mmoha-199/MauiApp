@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using StarterApp.Database.Data.Repositories;
 using StarterApp.Database.Models;
 
@@ -12,7 +14,7 @@ public class ItemService
         _repository = repository;
     }
 
-    public void AddItem(string name, string description)
+    public async Task AddItemAsync(string name, string description)
     {
         var item = new Item
         {
@@ -21,29 +23,27 @@ public class ItemService
             IsAvailable = true
         };
 
-        _repository.Add(item);
+        await _repository.AddAsync(item);
     }
-        public void DeleteItem(int id)
+        public async Task DeleteItemAsync(int id)
     {
-        _repository.Delete(id);
-    }
-
-    public List<Item> SearchItems(string query)
-    {
-        return _repository
-            .GetAll()
-            .Where(i => i.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
-            .ToList();
+        await _repository.DeleteAsync(id);
     }
 
-    public bool CheckAvailability(int itemId)
+    public async Task<List<Item>> SearchItemsAsync(string query)
     {
-        var item = _repository.GetById(itemId);
+        var items = await _repository.GetAllAsync();
+        return items.Where(i => i.Name.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+    public async Task<bool> CheckAvailabilityAsync(int itemId)
+    {
+        var item = await _repository.GetByIdAsync(itemId);
         return item?.IsAvailable ?? false;
     }
 
-    public List<Item> GetItems()
+    public async Task<List<Item>> GetItemsAsync()
     {
-        return _repository.GetAll();
+        return await _repository.GetAllAsync();
     }
 }

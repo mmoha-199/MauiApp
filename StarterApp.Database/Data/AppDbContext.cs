@@ -9,18 +9,18 @@ namespace StarterApp.Database.Data;
 public class AppDbContext : DbContext
 {
 
-    public AppDbContext()
-    { }
+    //public AppDbContext()//BAD fallback path
+    //{ }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     { }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder.IsConfigured) return;
 
-        //var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+        var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
-        /*if (string.IsNullOrEmpty(connectionString))
+        if (string.IsNullOrEmpty(connectionString))
         {
             var a = Assembly.GetExecutingAssembly();
             using var stream = a.GetManifestResourceStream("StarterApp.Database.appsettings.json");
@@ -31,11 +31,11 @@ public class AppDbContext : DbContext
 
             connectionString = config.GetConnectionString("DevelopmentConnection");
           
-        }*/
+        }
  
 
-        //optionsBuilder.UseNpgsql(connectionString);
-    }
+        optionsBuilder.UseNpgsql(connectionString);
+    }*/
 
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }

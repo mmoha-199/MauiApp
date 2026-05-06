@@ -7,6 +7,8 @@ using System.Diagnostics;
 using StarterApp.Services;
 using StarterApp.Database.Data.Repositories;
 
+
+
 namespace StarterApp;
 
 public static class MauiProgram
@@ -23,16 +25,16 @@ public static class MauiProgram
             });
 
         
-        builder.Services.AddDbContext<AppDbContext>(options =>
+        builder.Services.AddDbContextFactory<AppDbContext>(options =>
        {
-         var connectionString = "Host=localhost;Port=5432;Username=app_user;Password=app_password;Database=appdb";
+         /*var connectionString = "Host=localhost;Port=5432;Username=app_user;Password=app_password;Database=appdb";
 
          if (DeviceInfo.Platform == DevicePlatform.Android)
            {
              connectionString = "Host=10.0.2.2;Port=5432;Username=app_user;Password=app_password;Database=appdb";
-            }
+            }*/
 
-         options.UseNpgsql(connectionString);
+         options.UseNpgsql(DbConfig.ConnectionString);
         });
 
         builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
@@ -53,10 +55,10 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<ProfilePage>();
         builder.Services.AddTransient<UserDetailPage>();
-        builder.Services.AddTransient<ItemRepository>();
+        builder.Services.AddSingleton<ItemRepository>();
         builder.Services.AddTransient<ItemService>();
         builder.Services.AddTransient<ItemPage>();
-        builder.Services.AddTransient<ItemPageViewModel>();
+        builder.Services.AddTransient<ItemViewModel>();
         builder.Services.AddTransient<UserDetailViewModel>();
         builder.Services.AddSingleton<TempViewModel>();
         builder.Services.AddTransient<TempPage>();

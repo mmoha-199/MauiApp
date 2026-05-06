@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<TabbedPage
+<!--<TabbedPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="StarterApp.Views.ItemPage">
+    x:Class="StarterApp.Views.ItemPage"
+    Title="{Binding Title}">
 
-    <!-- BROWSE -->
+     BROWSE 
     <ContentPage Title="Browse">
         <VerticalStackLayout Padding="20">
 
@@ -23,7 +24,7 @@
         </VerticalStackLayout>
     </ContentPage>
 
-    <!-- ADD -->
+     ADD 
     <ContentPage Title="Add">
         <VerticalStackLayout Padding="20" Spacing="10">
 
@@ -36,7 +37,7 @@
         </VerticalStackLayout>
     </ContentPage>
 
-    <!-- SEARCH -->
+    SEARCH
     <ContentPage Title="Search">
         <VerticalStackLayout Padding="20" Spacing="10">
 
@@ -60,4 +61,59 @@
         </VerticalStackLayout>
     </ContentPage>
 
-</TabbedPage>
+</TabbedPage>-->
+<ContentPage x:Class="StarterApp.Views.ItemPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StarterApp.ViewModels"
+             Title="{Binding Title}">
+
+    <VerticalStackLayout>
+
+        <!-- Tab buttons -->
+        <HorizontalStackLayout Spacing="10" Padding="10">
+            <Button Text="Browse" Clicked="OnBrowseClicked"/>
+            <Button Text="Add" Clicked="OnAddClicked"/>
+            <Button Text="Search" Clicked="OnSearchClicked"/>
+        </HorizontalStackLayout>
+
+        <!-- BROWSE -->
+        <VerticalStackLayout x:Name="BrowseView" Padding="20">
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <!-- ADD -->
+        <VerticalStackLayout x:Name="AddView" Padding="20" Spacing="10" IsVisible="False">
+            <Entry Placeholder="Name" Text="{Binding Name}" />
+            <Entry Placeholder="Description" Text="{Binding Description}" />
+            <Button Text="Save" Command="{Binding AddItemCommand}" />
+        </VerticalStackLayout>
+
+        <!-- SEARCH -->
+        <VerticalStackLayout x:Name="SearchView" Padding="20" Spacing="10" IsVisible="False">
+            <Entry Placeholder="Search..." Text="{Binding SearchText}" />
+            <Button Text="Search" Command="{Binding SearchCommand}" />
+
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Description}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

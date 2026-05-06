@@ -87,6 +87,7 @@ public partial class MainViewModel : BaseViewModel
         {
             await _authService.LogoutAsync();
             await _navigationService.NavigateToAsync("LoginPage");
+            //await Shell.Current.GoToAsync("//LoginPage");
         }
     }
 
@@ -97,6 +98,7 @@ public partial class MainViewModel : BaseViewModel
     private async Task NavigateToProfileAsync() 
     {
         await _navigationService.NavigateToAsync("ProfilePage");
+        //await Shell.Current.GoToAsync("ProfilePage");
     }
 
     /// @brief Navigates to the settings page
@@ -106,6 +108,7 @@ public partial class MainViewModel : BaseViewModel
     private async Task NavigateToSettingsAsync()
     {
         await _navigationService.NavigateToAsync("TempPage");
+        //await Shell.Current.GoToAsync("TempPage");
     }
 
 
@@ -122,6 +125,7 @@ public partial class MainViewModel : BaseViewModel
         }
         
         await _navigationService.NavigateToAsync("UserListPage");
+        //await Shell.Current.GoToAsync("UserListPage");
     }
     /// @brief Navigates to the items page
     /// @details Relay command that navigates to the items management page, admin only
@@ -130,6 +134,7 @@ public partial class MainViewModel : BaseViewModel
     private async Task NavigateToItemsAsync()
     {
         await _navigationService.NavigateToAsync("ItemPage");
+        //await Shell.Current.GoToAsync("//ItemPage");
     }
     /// @brief Refreshes the dashboard data
     /// @details Relay command that reloads user data and simulates a refresh operation

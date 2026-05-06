@@ -7,46 +7,52 @@ using Microsoft.EntityFrameworkCore;
 namespace StarterApp.Database.Data.Repositories;
 public class ItemRepository
 {
-    private readonly AppDbContext _context;
-    public ItemRepository(AppDbContext context)
+    private readonly IDbContextFactory<AppDbContext> _contextFactory;
+    public ItemRepository(IDbContextFactory<AppDbContext> contextFactory)
     {
-        _context = context;
+        _contextFactory = contextFactory;
     }
-    public List<Item> GetAll()
+    public async Task<List<Item>> GetAllAsync()
     {
-        return _context.Items.ToList();
-    } 
-    public void Add(Item item)
-    {
-        _context.Items.Add(item);
-        _context.SaveChanges();
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Items.ToListAsync();
     }
-    public Item? GetById(int id)
+    public async Task AddAsync(Item item)
     {
-        return _context.Items.FirstOrDefault(i => i.Id == id);
+        using var context = await _contextFactory.CreateDbContextAsync();
+        context.Items.Add(item);
+        await context.SaveChangesAsync();
+    }
+    public async Task<Item?> GetByIdAsync(int id)
+    {
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Items.FirstOrDefaultAsync(i => i.Id == id);
     }
 
-    public void Delete(int id)
+    public async Task DeleteAsync(int id)
     {
-        var item = GetById(id);
+        using var context = await _contextFactory.CreateDbContextAsync();
+        //var item = await GetByIdAsync(id);
+        var item = await context.Items.FirstOrDefaultAsync(i => i.Id == id);
         if (item != null)
         {
-            _context.Items.Remove(item);
-            _context.SaveChanges();
+            context.Items.Remove(item);
+            await context.SaveChangesAsync();
         }
     }
 
-    public void Update(Item updatedItem)
+    public async Task UpdateAsync(Item updatedItem)
     {
-        _context.Items.Update(updatedItem);
-        _context.SaveChanges();
-    
+        using var context = await _contextFactory.CreateDbContextAsync();
+        context.Items.Update(updatedItem);
+        await context.SaveChangesAsync();
     }
 
-    public List<Item> Search(string query)
+    public async Task<List<Item>> SearchAsync(string query)
     {
-        return _context.Items
-            .Where(i => i.Name.Contains(query))
-            .ToList();
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Items
+            .Where(i => i.Name.ToLower().Contains(query.ToLower()))
+            .ToListAsync();
     }
 }
