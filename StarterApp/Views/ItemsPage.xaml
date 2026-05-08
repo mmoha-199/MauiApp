@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="StarterApp.Views.ItemsPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StarterApp.ViewModels"
+             xmlns:model="clr-namespace:StarterApp.Database.Models;assembly=StarterApp.Database"
+             x:DataType="vm:ItemsViewModel"
+             Title="Items">
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding LoadCommand}">
+        <CollectionView ItemsSource="{Binding List}"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Item">
+                    <Frame Margin="10" Padding="10">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Description}" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding Category}" FontSize="12" TextColor="DarkGray"/>
+                            <Label Text="{Binding PricePerDay, StringFormat='${0:F2}/day'}"
+                                   FontSize="14" TextColor="Green"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="No items yet." FontSize="16" TextColor="Gray"/>
+                    <Button Text="Add Item" Command="{Binding Shell.Current.GoToAsync}"
+                            CommandParameter="createitem"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

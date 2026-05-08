@@ -2,10 +2,10 @@ using StarterApp.ViewModels;
 
 namespace StarterApp.Views;
 
-public partial class ItemPage : ContentPage
+public partial class ItemsPage : ContentPage
 {
 	private readonly ItemViewModel _viewModel;
-	public ItemPage(ItemViewModel viewModel)
+	public ItemsPage(ItemViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
@@ -21,9 +21,10 @@ public partial class ItemPage : ContentPage
 	{
 		base.OnAppearing();
 		//run this async method, but don’t wait for it to complete before allowing the UI to continue loading
-		await _viewModel.InitializeAsync();
+		//await _viewModel.InitializeAsync();
+        _viewModel.LoadCommand.Execute(null);
 	}
-	    private void OnBrowseClicked(object sender, EventArgs e)
+	   /* private void OnBrowseClicked(object sender, EventArgs e)
     {
         BrowseView.IsVisible = true;
         AddView.IsVisible = false;
@@ -42,5 +43,5 @@ public partial class ItemPage : ContentPage
         BrowseView.IsVisible = false;
         AddView.IsVisible = false;
         SearchView.IsVisible = true;
-    }
+    }*/
 }

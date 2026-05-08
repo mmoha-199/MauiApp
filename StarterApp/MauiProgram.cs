@@ -25,17 +25,12 @@ public static class MauiProgram
             });
 
         
-        builder.Services.AddDbContextFactory<AppDbContext>(options =>
-       {
-         /*var connectionString = "Host=localhost;Port=5432;Username=app_user;Password=app_password;Database=appdb";
+        /*builder.Services.AddDbContextFactory<AppDbContext>(options =>
 
-         if (DeviceInfo.Platform == DevicePlatform.Android)
-           {
-             connectionString = "Host=10.0.2.2;Port=5432;Username=app_user;Password=app_password;Database=appdb";
-            }*/
 
          options.UseNpgsql(DbConfig.ConnectionString);
-        });
+        });*/
+        builder.Services.AddDbContextFactory<AppDbContext>();
 
         builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
         builder.Services.AddSingleton<INavigationService, NavigationService>();

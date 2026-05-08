@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StarterApp.ViewModels"
+             xmlns:model="clr-namespace:StarterApp.Database.Models;assembly=StarterApp.Database"
+             x:Class="StarterApp.Views.RentalsPage"
+             x:DataType="vm:RentalsViewModel"
+             Title="My Rentals">
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding LoadCommand}">
+        <CollectionView ItemsSource="{Binding Rentals}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Rental">
+                    <Frame Margin="8" Padding="10">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="{Binding Item.Name}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Item.Category}" FontSize="12" TextColor="DarkGray"/>
+                            <Label Text="{Binding StartDate, StringFormat='Start: {0:MMM dd yyyy}'}" FontSize="12"/>
+                            <Label Text="{Binding EndDate, StringFormat='End: {0:MMM dd yyyy}'}" FontSize="12"/>
+                            <Label Text="{Binding TotalPrice, StringFormat='Total ${0:F2}'}"
+                                   FontSize="13" TextColor="Green"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="No rentals yet." FontSize="16" TextColor="Gray"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

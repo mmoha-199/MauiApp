@@ -23,35 +23,7 @@ public partial class ItemViewModel : BaseViewModel
 
     [ObservableProperty]
     private string _searchText;
-    /*public string Name
-    {
-       get => _name;
-       set
-        {
-           _name = value;
-          
-        }
-    }
-        private string _description;
-    public string Description
-    {
-       get => _description;
-       set
-        {
-           _description = value;
-           
-        }
-    }
-    
-    public string SearchText
-    {
-       get => _searchText;
-       set
-        {
-           _searchText = value;
-           
-        }
-    }*/
+
     
     public ICommand AddItemCommand { get; }
     public ICommand DeleteItemCommand { get; }

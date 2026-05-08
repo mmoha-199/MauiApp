@@ -8,6 +8,7 @@ namespace StarterApp.Database.Data.Repositories;
 public class ItemRepository
 {
     private readonly IDbContextFactory<AppDbContext> _contextFactory;
+    
     public ItemRepository(IDbContextFactory<AppDbContext> contextFactory)
     {
         _contextFactory = contextFactory;
@@ -15,11 +16,13 @@ public class ItemRepository
     public async Task<List<Item>> GetAllAsync()
     {
         using var context = await _contextFactory.CreateDbContextAsync();
+        Console.WriteLine(context.Database.GetDbConnection().ConnectionString);
         return await context.Items.ToListAsync();
     }
     public async Task AddAsync(Item item)
     {
         using var context = await _contextFactory.CreateDbContextAsync();
+        Console.WriteLine(context.Database.GetDbConnection().ConnectionString);
         context.Items.Add(item);
         await context.SaveChangesAsync();
     }

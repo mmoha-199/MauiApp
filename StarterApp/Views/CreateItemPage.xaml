@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StarterApp.ViewModels"
+             x:Class="StarterApp.Views.CreateItemPage"
+             x:DataType="vm:CreateItemViewModel"
+             Title="Add Item">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Entry Placeholder="Name" Text="{Binding Name}"/>
+            <Editor Placeholder="Description" Text="{Binding Description}" AutoSize="TextChanges"/>
+            <Entry Placeholder="Category" Text="{Binding Category}"/>
+            <Entry Placeholder="Price Per Day" Text="{Binding PricePerDay}" Keyboard="Numeric"/>
+            <Button Text="Save" Command="{Binding SaveCommand}" />
+            <Button Text="Cancel" Command="{Binding Shell.Current.GoToAsync('..')}"
+                    BackgroundColor="Gray"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
