@@ -25,11 +25,7 @@ public static class MauiProgram
             });
 
         
-        /*builder.Services.AddDbContextFactory<AppDbContext>(options =>
 
-
-         options.UseNpgsql(DbConfig.ConnectionString);
-        });*/
         builder.Services.AddDbContextFactory<AppDbContext>();
 
         builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
@@ -41,20 +37,23 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MainViewModel>();
         builder.Services.AddTransient<MainPage>();
-        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<LoginPage>();
-        builder.Services.AddSingleton<RegisterViewModel>();
+        builder.Services.AddTransient<RegisterViewModel>();
         builder.Services.AddTransient<RegisterPage>();
         builder.Services.AddTransient<UserListViewModel>();
         builder.Services.AddTransient<UserListPage>();
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<ProfilePage>();
         builder.Services.AddTransient<UserDetailPage>();
-        builder.Services.AddSingleton<ItemRepository>();
+        builder.Services.AddScoped<ItemRepository>();
+        builder.Services.AddScoped<RentalRepository>();
         builder.Services.AddTransient<ItemService>();
         builder.Services.AddTransient<ItemsPage>();
         builder.Services.AddTransient<CreateItemPage>();
         builder.Services.AddTransient<RentalsPage>();
+        builder.Services.AddTransient<RentalsViewModel>();
+        builder.Services.AddTransient<CreateItemViewModel>();
         builder.Services.AddTransient<ItemsViewModel>();
         builder.Services.AddTransient<UserDetailViewModel>();
         builder.Services.AddSingleton<TempViewModel>();

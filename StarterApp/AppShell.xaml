@@ -8,15 +8,10 @@
 
     
     <TabBar>
-        <ShellContent Title="Browse" Icon="home.png" ContentTemplate="{DataTemplate views:ItemsPage}" Route="items"/>
-        <ShellContent Title="My Rentals" Icon="list.png" ContentTemplate="{DataTemplate views:RentalsPage}" Route="rentals"/>
-        <ShellContent Title="Profile" Icon="person.png" ContentTemplate="{DataTemplate views:ProfilePage}" Route="profile"/>
+        <ShellContent Title="Browse" Icon="home.png" Route="items"/>
+        <ShellContent Title="My Rentals" Icon="list.png" Route="rentals"/>
+        <ShellContent Title="Profile" Icon="person.png" Route="profile"/>
     </TabBar>
     
-    <!--<ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
-      <ShellContent
-        Title="Items"
-        Route="ItemPage"
-        ContentTemplate="{DataTemplate views:ItemPage}" /> -->
 
 </Shell>

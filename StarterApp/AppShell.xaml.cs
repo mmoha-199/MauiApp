@@ -10,6 +10,10 @@ public partial class AppShell : Shell
 	{	
 		BindingContext = viewModel;
 		InitializeComponent();
+		/* Register routes for DI resolution
+        Routing.RegisterRoute(nameof(ItemsPage), typeof(ItemsPage));
+        Routing.RegisterRoute(nameof(RentalsPage), typeof(RentalsPage));
+        Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));*/
 
 	}
 }
