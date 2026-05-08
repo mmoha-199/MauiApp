@@ -4,8 +4,8 @@ namespace StarterApp.Views;
 
 public partial class ItemsPage : ContentPage
 {
-	private readonly ItemViewModel _viewModel;
-	public ItemsPage(ItemViewModel viewModel)
+	private readonly ItemsViewModel _viewModel;
+	public ItemsPage(ItemsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
