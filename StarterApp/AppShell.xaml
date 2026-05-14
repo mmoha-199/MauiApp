@@ -7,11 +7,13 @@
     Shell.FlyoutBehavior="Disabled">
 
     
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Title="Browse" Icon="home.png" Route="items"/>
         <ShellContent Title="My Rentals" Icon="list.png" Route="rentals"/>
         <ShellContent Title="Profile" Icon="person.png" Route="profile"/>
-    </TabBar>
+    </TabBar>-->
+    <ShellContent ContentTemplate="{DataTemplate views:ItemsPage}" />
+
     
 
 </Shell>

@@ -15,7 +15,6 @@ public partial class App : Application
 
 		Routing.RegisterRoute(nameof(Views.LoginPage), typeof(Views.LoginPage));
 		Routing.RegisterRoute(nameof(Views.MainPage), typeof(Views.MainPage));
-		// Replaced ItemDetailPage with ItemPage (supports list, add, delete, search)
 		Routing.RegisterRoute(nameof(Views.ItemsPage), typeof(Views.ItemsPage));
 		Routing.RegisterRoute(nameof(Views.RentalsPage), typeof(Views.RentalsPage));
 		Routing.RegisterRoute(nameof(Views.CreateItemPage), typeof(Views.CreateItemPage));
@@ -23,14 +22,7 @@ public partial class App : Application
 		Routing.RegisterRoute(nameof(Views.UserListPage), typeof(Views.UserListPage));
 		Routing.RegisterRoute(nameof(Views.UserDetailPage), typeof(Views.UserDetailPage));
 		Routing.RegisterRoute(nameof(Views.TempPage), typeof(Views.TempPage));
-		Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
-		// Register routes for DI resolution
-        Routing.RegisterRoute(nameof(Views.ItemsPage), typeof(Views.ItemsPage));
-        Routing.RegisterRoute(nameof(Views.RentalsPage), typeof(Views.RentalsPage));
-        Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
-
-
-		
+		Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));	
 	}
 
 	protected override Window CreateWindow(IActivationState? activationState)
