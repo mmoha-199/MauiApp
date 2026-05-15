@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:StarterApp.ViewModels"
              x:Class="StarterApp.Views.CreateItemPage"
              x:DataType="vm:CreateItemViewModel"
-             Title="Add Item">
+             Title="{Binding Title}">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Entry Placeholder="Name" Text="{Binding Name}"/>

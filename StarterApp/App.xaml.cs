@@ -24,10 +24,7 @@ public partial class App : Application
 		Routing.RegisterRoute(nameof(Views.UserDetailPage), typeof(Views.UserDetailPage));
 		Routing.RegisterRoute(nameof(Views.TempPage), typeof(Views.TempPage));
 		Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
-		// Register routes for DI resolution
-        Routing.RegisterRoute(nameof(Views.ItemsPage), typeof(Views.ItemsPage));
-        Routing.RegisterRoute(nameof(Views.RentalsPage), typeof(Views.RentalsPage));
-        Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
+		
 
 
 		

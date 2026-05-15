@@ -14,6 +14,10 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ItemsPage), typeof(ItemsPage));
         Routing.RegisterRoute(nameof(RentalsPage), typeof(RentalsPage));
         Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));*/
+		Loaded += async (s, e) =>
+        {
+            await GoToAsync("//Items");
+        };
 
 	}
 }
