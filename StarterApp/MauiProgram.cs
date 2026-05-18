@@ -48,7 +48,7 @@ public static class MauiProgram
         builder.Services.AddTransient<UserDetailPage>();
         builder.Services.AddScoped<ItemRepository>();
         builder.Services.AddScoped<RentalRepository>();
-        builder.Services.AddTransient<ItemService>();
+        //builder.Services.AddTransient<ItemService>();
         builder.Services.AddTransient<ItemsPage>();
         builder.Services.AddTransient<CreateItemPage>();
         builder.Services.AddTransient<RentalsPage>();
