@@ -17,13 +17,13 @@ public partial class ItemsPage : ContentPage
             throw new Exception("ItemPageViewModel could not be resolved.");*/
 	}
 	
-	protected override async void OnAppearing()
+	/*protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 		//run this async method, but don’t wait for it to complete before allowing the UI to continue loading
 		//await _viewModel.InitializeAsync();
         _viewModel.LoadCommand.Execute(null);
-	}
+	}*/
 	   /* private void OnBrowseClicked(object sender, EventArgs e)
     {
         BrowseView.IsVisible = true;

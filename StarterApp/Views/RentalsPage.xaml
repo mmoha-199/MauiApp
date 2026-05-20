@@ -11,7 +11,10 @@
         <CollectionView ItemsSource="{Binding Rentals}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Rental">
-                    <Frame Margin="8" Padding="10">
+                    <Border Margin="8" Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
                         <VerticalStackLayout Spacing="5">
                             <Label Text="{Binding Item.Name}" FontAttributes="Bold"/>
                             <Label Text="{Binding Item.Category}" FontSize="12" TextColor="DarkGray"/>
@@ -20,7 +23,7 @@
                             <Label Text="{Binding TotalPrice, StringFormat='Total ${0:F2}'}"
                                    FontSize="13" TextColor="Green"/>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             <CollectionView.EmptyView>

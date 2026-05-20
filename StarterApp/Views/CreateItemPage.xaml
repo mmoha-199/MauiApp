@@ -12,7 +12,7 @@
             <Entry Placeholder="Category" Text="{Binding Category}"/>
             <Entry Placeholder="Price Per Day" Text="{Binding PricePerDay}" Keyboard="Numeric"/>
             <Button Text="Save" Command="{Binding SaveCommand}" />
-            <Button Text="Cancel" Command="{Binding Shell.Current.GoToAsync('..')}"
+            <Button Text="Cancel" Command="{Binding CancelCommand}"
                     BackgroundColor="Gray"/>
         </VerticalStackLayout>
     </ScrollView>

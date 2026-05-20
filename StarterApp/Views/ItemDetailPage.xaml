@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StarterApp.Views.ItemDetailPage"
+    Title="{Binding title}">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15">
+
+            <Label
+                Text="{Binding SelectedItem.Name}"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+                    <Border
+                        Background="LightGray"
+                        Padding="15">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Description"
+                        FontAttributes="Bold"
+                        FontSize="18" />
+
+                    <Label
+                        Text="{Binding SelectedItem.Description}"
+                        FontSize="16" />
+
+                    <Label
+                        Text="Category"
+                        FontAttributes="Bold"
+                        FontSize="18" />
+
+                    <Label
+                        Text="{Binding SelectedItem.Category}"
+                        FontSize="16" />
+
+                    <Label
+                        Text="Price Per Day"
+                        FontAttributes="Bold"
+                        FontSize="18" />
+
+                    <Label
+                        Text="{Binding SelectedItem.PricePerDay, StringFormat='£{0:F2}'}"
+                        FontSize="16"
+                        TextColor="Green" />
+
+                    <Label
+                        Text="Availability"
+                        FontAttributes="Bold"
+                        FontSize="18" />
+
+                    <Label FontSize="16">
+                        <Label.Triggers>
+                            <DataTrigger
+                                TargetType="Label"
+                                Binding="{Binding SelectedItem.IsAvailable}"
+                                Value="True">
+                                <Setter Property="Text" Value="Available" />
+                                <Setter Property="TextColor" Value="Green" />
+                            </DataTrigger>
+
+                            <DataTrigger
+                                TargetType="Label"
+                                Binding="{Binding SelectedItem.IsAvailable}"
+                                Value="False">
+                                <Setter Property="Text" Value="Not Available" />
+                                <Setter Property="TextColor" Value="Red" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
